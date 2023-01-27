@@ -1,31 +1,24 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H_
+#define _MAIN_H_
 #include <stdarg.h>
-#include <stdio.h>
 #include <unistd.h>
-
-#define UNUSED(x) (void)(x)
-#define BUFF_SIZE 1024
-
-/* FLAGS */
-#define F_MINUS 1
-#define F_PLUS 2
-#define F_ZERO 4
-#define F_HASH 8
-#define F_SPACE 16
-
-/* SIZES */
-#define S_LONG 2
-#define S_SHORT 1
-
+#include <stdlib.h>
 /**
- * struct fmt - Struct op
- *
- * @fmt: The format.
- * @fn: The function associated.
+ * struct vartype - struct vartype
+ * @vartype: type of variable to be printed
+ * @f: the function associated
  */
-struct fmt
+typedef struct vartype
 {
-	char fmt;
-	int (*fn)(va_list, char[], int, int, int, int);
-};
+	char *vartype;
+	int (*f)(va_list);
+} var_t;
+int _printf(const char *format, ...);
+int _putchar(char c);
+int c_func(va_list args);
+int s_func(va_list args);
+int perc_func(va_list args);
+int aux(int arg);
+int printf_digit(va_list list);
+
+#endif
